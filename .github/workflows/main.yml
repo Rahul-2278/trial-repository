@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: ifocnfig
+        run: ifconfig
      
   
  
