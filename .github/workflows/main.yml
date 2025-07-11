@@ -1,0 +1,13 @@
+name: mywf
+on:
+ push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: timedatectl
+     
+  
+ 
