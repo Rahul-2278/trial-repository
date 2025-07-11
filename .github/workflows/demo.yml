@@ -8,5 +8,5 @@ jobs:
      runs-on: ubuntu-latest
      steps:
        -name: print
-         RUN: echo "Hellow World"
+        RUN: echo "Hellow World"
    
