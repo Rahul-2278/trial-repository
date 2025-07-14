@@ -8,6 +8,18 @@ jobs:
     steps:
       - name: test
         run: ifconfig
+
+      - name: Deploy to remote server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 211125498309.dkr.ecr.ap-south-1.amazonaws.com
+            docker pull 211125498309.dkr.ecr.ap-south-1.amazonaws.com/survey_app_frontend_angular:18
+            docker rm -f mycontainer || true
+            docker run -itd --name mycontainer -p 8080:80 211125498309.dkr.ecr.ap-south-1.amazonaws.com/survey_app_frontend_angular:18
      
   
  
