@@ -20,7 +20,7 @@ jobs:
             cd gitDir
             git clone git@github.com:Rahul-2278/trial-repository.git
             cd trial-repository
-            docker build -t nginx-image
+            docker build -f Dockerfile -t nginx-image
             docker run -itd --name nginx-container -p 8080:80 nginx-image
      
   
