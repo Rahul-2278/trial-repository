@@ -17,9 +17,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 211125498309.dkr.ecr.ap-south-1.amazonaws.com
-            docker pull 211125498309.dkr.ecr.ap-south-1.amazonaws.com/survey_app_frontend_angular:18
-            docker rm -f mycontainer || true
-            docker run -itd --name mycontainer -p 8080:80 211125498309.dkr.ecr.ap-south-1.amazonaws.com/survey_app_frontend_angular:18
+            cd gitDir
+            git clone git@github.com:Rahul-2278/trial-repository.git
+            cd trial-repository
+            docker build -t nginx-image
+            docker run -itd --name nginx-container -p 8080:80 nginx-image
      
   
  
